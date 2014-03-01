@@ -1,0 +1,9 @@
+{
+  "modules" : { 
+    "spoticmd"  : {
+      "description": "Permet de commander Spotify",
+      "version"    : "0.1",
+      "spotify_plugin_uri" : "spotify:app:sarah-spoticmd:"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="ruleSpoticmd" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+  <rule id="ruleSpoticmd" scope="public">
+	<example>Sarah, met de la musique</example>
+    <tag>out.action=new Object(); </tag>
+    
+    <item weight="2">Sarah</item>
+
+    <one-of>
+      <item>met de la musique <tag>out.action.cmd='play';</tag> </item>
+      <item>allume la musique <tag>out.action.cmd='play';</tag> </item>
+      <item>coupe la musique <tag>out.action.cmd='pause';</tag> </item>
+      <item>arrete la musique <tag>out.action.cmd='pause';</tag> </item>
+      <item>stoppe la musique <tag>out.action.cmd='pause';</tag> </item>
+      <item>change de morceau<tag>out.action.cmd='next';</tag></item>
+      <item>met le morceau suivant<tag>out.action.cmd='next';</tag></item>
+      <item>morceau suivant<tag>out.action.cmd='next';</tag></item>
+      <item>chanson suivante<tag>out.action.cmd='next';</tag></item>
+      <item>remet le morceau précédent<tag>out.action.cmd='prev';</tag></item>
+      <item>morceau précédent<tag>out.action.cmd='prev';</tag></item>
+      <item>chanson précédente<tag>out.action.cmd='prev';</tag></item>
+
+      <item>
+        <one-of>
+          <item>joue</item>
+          <item>met</item>
+        </one-of>
+        <one-of>
+          <item>la playlist divers<tag>out.action.playlist="divers";out.action.cmd = "playlist"</tag></item>
+          <item>la playlist chansons françaises<tag>out.action.playlist="fr";out.action.cmd = "playlist"</tag></item>
+          <item>la playlist vieilles chansons françaises<tag>out.action.playlist="oldfr";out.action.cmd = "playlist"</tag></item>
+          <item>ma playlist<tag>out.action.playlist="diversfr";out.action.cmd = "playlist"</tag></item>
+        </one-of>
+      </item>
+
+      <item>
+        <one-of>
+          <item>joue une chanson</item>
+          <item>met une chanson</item>
+          <item>joue des chansons</item>
+          <item>met des chansons</item>
+        </one-of>
+        <ruleref special="GARBAGE" />
+        <tag>out.action._attributes.dictation="true";</tag>
+        <tag>out.action.cmd="playArtist";</tag>
+      </item>
+
+      <item>
+        <one-of>
+          <item>joue la chanson</item>
+          <item>met la chanson</item>
+        </one-of>
+        
+        <ruleref special="GARBAGE" />
+        <tag>out.action._attributes.dictation="true";</tag>
+        <tag>out.action.cmd="playTrack";</tag>
+      </item>
+    </one-of>
+
+    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/spoticmd";</tag>
+  </rule> 
+</grammar>
